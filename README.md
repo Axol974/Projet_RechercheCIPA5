@@ -89,4 +89,36 @@ L'API ImmoData fournit des informations sur les prix immobiliers dans différent
     "prix": 10000
 }
 ```
+# Interface Web
+L'interface web de notre application est construite avec Streamlit, un framework Python pour la création d'applications web. Elle permet aux utilisateurs de consulter les prix immobiliers pour chaque ville en fonction des quartiers.
 
+Voici comment elle fonctionne :
+1. **Choisir une ville** : Lorsque vous lancez l'application, la première chose que vous verrez est un menu déroulant pour sélectionner une ville. Sélectionnez la ville pour laquelle vous souhaitez consulter les prix immobiliers.
+
+<div style="text-align:center">
+    <img src="Images/Choisir_Ville.png" width="80%">
+</div>
+
+2. **Choisir un quartier** : Une fois que vous avez sélectionné une ville, un autre menu déroulant apparaîtra pour sélectionner un quartier dans la ville choisie.
+
+<div style="text-align:center">
+    <img src="Images/Choisir_cartier.png" width="80%">
+</div>
+
+3. **Visualiser les prix immobiliers** : Après avoir sélectionné un quartier, l'application affichera les prix immobiliers pour le quartier sélectionné.
+
+<div style="text-align:center">
+    <img src="Images/Paris_Sud.png" width="80%">
+</div>
+
+4. **Ajouter une nouvelle ville** : Vous pouvez également ajouter une nouvelle ville et ses quartiers en utilisant le formulaire de soumission en bas de l'application.
+
+<div style="text-align:center">
+    <img src="Images/Nouvelle_Ville.png" width="80%">
+</div>
+
+5. **Visualiser la nouvelle ville dans la base de données** : Après avoir ajouté une nouvelle ville, vous pouvez la visualiser dans la base de données. L'image ci-dessous montre comment une nouvelle ville apparaît dans la base de données.
+
+<div style="text-align:center">
+    <img src="Images/Nouvelle_Ville_Dans_Base.png" width="80%">
+</div>
