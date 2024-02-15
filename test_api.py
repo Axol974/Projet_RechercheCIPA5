@@ -70,3 +70,29 @@ def test_post_ville_prix_negatif():
     prix = -5000  # Utilisez une valeur négative pour le prix
     response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
     assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+
+def test_post_ville_sans_ville():
+    quartier = "NouveauQuartier"
+    prix = 5000
+    response = requests.post(f"{BASE_URL}/ville", json={'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+def test_post_ville_sans_quartier():
+    ville = "NouvelleVille"
+    prix = 5000
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+def test_post_ville_sans_prix():
+    ville = "NouvelleVille"
+    quartier = "NouveauQuartier"
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+def test_post_ville_prix_non_numerique():
+    ville = "NouvelleVille"
+    quartier = "NouveauQuartier"
+    prix = "non_numerique"
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
