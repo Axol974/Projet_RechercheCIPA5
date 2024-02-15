@@ -39,6 +39,18 @@ streamlit run webClient.py
 
 L'interface web sera alors accessible via votre navigateur à l'adresse indiquée dans le terminal (par exemple, `http://localhost:8501`).
 
+## Tests
+
+Pour exécuter les tests de l'API, utilisez la commande suivante :
+```
+python test_api.py
+```
+
+Pour exécuter les tests en utilisant pytest, utilisez la commande suivante :
+```
+pytest
+```
+
 ## API
 
 L'API ImmoData fournit des informations sur les prix immobiliers dans différentes villes et quartiers. Vous pouvez accéder à des données telles que la liste des villes, les quartiers d'une ville spécifique, et les prix des quartiers.
@@ -77,3 +89,4 @@ L'API ImmoData fournit des informations sur les prix immobiliers dans différent
     "prix": 10000
 }
 ```
+
