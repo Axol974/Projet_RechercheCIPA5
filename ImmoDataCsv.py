@@ -23,8 +23,8 @@ def prix_quartiers(ville, quartier):
     # Lire le fichier CSV
     df = lire_csv()
 
-    # renvoyer  sous forme de dictionnaire la moyenne des prix au m² pour un quartier
-    prix_moyen = df[(df['Ville'] == ville) & (df['Quartier'] == quartier)]['Prix au m²'].mean()
+    # renvoyer  sous forme de dictionnaire la moyenne des prix au m2 pour un quartier
+    prix_moyen = df[(df['Ville'] == ville) & (df['Quartier'] == quartier)]['Prix au m2'].mean()
 
     # Aprocher le prix moyen à 2 chiffres après la virgule
     prix_moyen = round(prix_moyen, 2)
@@ -33,7 +33,7 @@ def prix_quartiers(ville, quartier):
 
 
 # Fonction pour Lire le fichier CSV avec Pandas
-# entête: Ville,Quartier,Prix au m²
+# entête: Ville,Quartier,Prix au m2
 def lire_csv():
     df = pd.read_csv('prix_immobilier_fictif.csv', sep=',')
     return df

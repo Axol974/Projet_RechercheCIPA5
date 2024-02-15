@@ -19,7 +19,7 @@ def init():
             for row in reader:
                 print(row)
                 cursor.execute("INSERT INTO immobilier VALUES (?, ?, ?)",
-                               (row['Ville'], row['Quartier'], row['Prix au m²']))
+                               (row['Ville'], row['Quartier'], row['Prix au m2']))
             print("Données importées avec succès.")
         connection.commit()
     connection.close()
