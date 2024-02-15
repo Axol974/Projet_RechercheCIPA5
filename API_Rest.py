@@ -32,15 +32,25 @@ def get_prix_quartiers(ville, quartier):
 
 @app.route('/ville', methods=['POST'])
 def post_ville():
+    # Verifier si les données sont bien envoyées
+    if not request.json:
+        return jsonify({'message': 'Les données sont obligatoires'}), 400
+    # verifier que ville, quartier et prix sont bien envoyés
+    if not all(key in request.json for key in ['ville', 'quartier', 'prix']):
+        return jsonify({'message': 'Les données sont obligatoires'}), 400
     ville = request.json['ville']
     quartier = request.json['quartier']
     prix = request.json['prix']
-    #Verifie si le prix est un nombre
+    # Verifier si tous les champs sont remplis
+    if not ville or not quartier or not prix or ville == '' or quartier == '' or prix == '':
+        return jsonify({'message': 'Tous les champs sont obligatoires'}), 400
+
+    # Verifie si le prix est un nombre
     try:
         float(prix)
     except ValueError:
         return jsonify({'message': 'Le prix doit être un nombre'}), 400
-    #Verifie si le prix est positif
+    # Verifie si le prix est positif
     if prix < 0:
         return jsonify({'message': 'Le prix doit être positif'}), 400
 
