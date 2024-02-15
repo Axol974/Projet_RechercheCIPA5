@@ -8,8 +8,11 @@
 Application web pour consulter les prix immobilier pour chaque ville en fonction des quartiers.
 
 ## Installation
-
-Assurez-vous que Python est installé sur votre système avant de commencer. Vous pouvez télécharger Python à partir de [python.org](https://www.python.org/).
+Ce projet nécessite Python 3.12.1 ou une version ultérieure. Vous pouvez vérifier votre version de Python en utilisant la commande suivante dans votre terminal :
+```
+python --version
+```
+Si Python n'est pas installé sur votre système. Vous pouvez télécharger Python à partir de [python.org](https://www.python.org/).
 
 Pour installer les dépendances requises pour votre projet, exécutez la commande suivante :
 
@@ -39,7 +42,7 @@ streamlit run webClient.py
 
 L'interface web sera alors accessible via votre navigateur à l'adresse indiquée dans le terminal (par exemple, `http://localhost:8501`).
 
-## Tests
+## Exécuter les tests
 
 Pour exécuter les tests de l'API, utilisez la commande suivante :
 ```
@@ -50,6 +53,20 @@ Pour exécuter les tests en utilisant pytest, utilisez la commande suivante :
 ```
 pytest
 ```
+## Tests effectués
+Nous avons effectué une série de tests pour vérifier le bon fonctionnement de notre API. Ces tests sont définis dans le fichier `test_api.py`. Voici une brève description de ces tests :
+
+1. **Test de récupération des villes** : Ce test vérifie que l'API renvoie une liste de villes lorsqu'on accède à l'endpoint `/villes`.
+
+2. **Test de récupération des quartiers d'une ville** : Ce test vérifie que l'API renvoie une liste de quartiers pour une ville spécifique lorsqu'on accède à l'endpoint `/ville/<ville>`.
+
+3. **Test de récupération des prix d'un quartier dans une ville** : Ce test vérifie que l'API renvoie le prix d'un quartier spécifique dans une ville donnée lorsqu'on accède à l'endpoint `/ville/<ville>/<quartier>`.
+
+4. **Test d'ajout d'un prix pour un quartier dans une ville** : Ce test vérifie que l'API ajoute correctement un prix pour un quartier spécifique dans une ville donnée lorsqu'on envoie une requête POST à l'endpoint `/ville`.
+
+5. **Tests d'erreurs** : Nous avons également effectué une série de tests pour vérifier que l'API renvoie les codes d'erreur appropriés lorsque les données envoyées sont incorrectes ou manquantes.
+
+
 
 ## API
 
@@ -95,30 +112,30 @@ L'interface web de notre application est construite avec Streamlit, un framework
 Voici comment elle fonctionne :
 1. **Choisir une ville** : Lorsque vous lancez l'application, la première chose que vous verrez est un menu déroulant pour sélectionner une ville. Sélectionnez la ville pour laquelle vous souhaitez consulter les prix immobiliers.
 
-<div style="text-align:center">
+<p align="center">
     <img src="Images/Choisir_Ville.png" width="80%">
-</div>
+</p>
 
 2. **Choisir un quartier** : Une fois que vous avez sélectionné une ville, un autre menu déroulant apparaîtra pour sélectionner un quartier dans la ville choisie.
 
-<div style="text-align:center">
+<p align="center">
     <img src="Images/Choisir_cartier.png" width="80%">
-</div>
+</p>
 
 3. **Visualiser les prix immobiliers** : Après avoir sélectionné un quartier, l'application affichera les prix immobiliers pour le quartier sélectionné.
 
-<div style="text-align:center">
+<p align="center">
     <img src="Images/Paris_Sud.png" width="80%">
-</div>
+</p>
 
 4. **Ajouter une nouvelle ville** : Vous pouvez également ajouter une nouvelle ville et ses quartiers en utilisant le formulaire de soumission en bas de l'application.
 
-<div style="text-align:center">
+<p align="center">
     <img src="Images/Nouvelle_Ville.png" width="80%">
-</div>
+</p>
 
 5. **Visualiser la nouvelle ville dans la base de données** : Après avoir ajouté une nouvelle ville, vous pouvez la visualiser dans la base de données. L'image ci-dessous montre comment une nouvelle ville apparaît dans la base de données.
 
-<div style="text-align:center">
+<p align="center">
     <img src="Images/Nouvelle_Ville_Dans_Base.png" width="80%">
-</div>
+</p>
