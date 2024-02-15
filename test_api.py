@@ -78,11 +78,13 @@ def test_post_ville_sans_ville():
     response = requests.post(f"{BASE_URL}/ville", json={'quartier': quartier, 'prix': prix})
     assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
 
+
 def test_post_ville_sans_quartier():
     ville = "NouvelleVille"
     prix = 5000
     response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'prix': prix})
     assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
 
 def test_post_ville_sans_prix():
     ville = "NouvelleVille"
@@ -90,9 +92,34 @@ def test_post_ville_sans_prix():
     response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier})
     assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
 
+
 def test_post_ville_prix_non_numerique():
     ville = "NouvelleVille"
     quartier = "NouveauQuartier"
     prix = "non_numerique"
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+
+def test_post_ville_prix_chaine_vide():
+    ville = "NouvelleVille"
+    quartier = "NouveauQuartier"
+    prix = ""  # Utilisez une chaîne vide pour le prix
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+
+def test_post_ville_ville_chaine_vide():
+    ville = ""  # Utilisez une chaîne vide pour la ville
+    quartier = "NouveauQuartier"
+    prix = 5000
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
+
+
+def test_post_ville_quartier_chaine_vide():
+    ville = "NouvelleVille"
+    quartier = ""  # Utilisez une chaîne vide pour le quartier
+    prix = 5000
     response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
     assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400
