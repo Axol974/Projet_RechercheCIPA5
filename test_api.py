@@ -49,3 +49,24 @@ def test_post_ville():
         assert False
     # Verifier que le prix est bien celui qu'on a ajouté
     assert float(response2.json()) == prix
+
+
+def test_get_quartiers_non_existant():
+    ville = "NonExistantCity"  # Utilisez une ville qui n'existe pas dans votre base de données
+    response = requests.get(f"{BASE_URL}/ville/{ville}")
+    assert response.status_code == 404  # Le code de statut HTTP pour "Not Found" est 404
+
+
+def test_get_prix_quartiers_non_existant():
+    ville = "Paris"  # Utilisez une ville existante dans votre base de données
+    quartier = "NonExistantQuartier"  # Utilisez un quartier qui n'existe pas dans votre base de données
+    response = requests.get(f"{BASE_URL}/ville/{ville}/{quartier}")
+    assert response.status_code == 404  # Le code de statut HTTP pour "Not Found" est 404
+
+
+def test_post_ville_prix_negatif():
+    ville = "NouvelleVille"
+    quartier = "NouveauQuartier"
+    prix = -5000  # Utilisez une valeur négative pour le prix
+    response = requests.post(f"{BASE_URL}/ville", json={'ville': ville, 'quartier': quartier, 'prix': prix})
+    assert response.status_code == 400  # Le code de statut HTTP pour "Bad Request" est 400

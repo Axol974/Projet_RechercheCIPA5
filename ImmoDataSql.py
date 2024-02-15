@@ -57,6 +57,18 @@ def prix_quartiers(ville, quartier):
     connection = sqlite3.connect("prix_immobilier_fictif.db")
     cursor = connection.cursor()
 
+    # Verifier si la ville existe
+    cursor.execute("SELECT * FROM immobilier WHERE ville=?", (ville,))
+    ville_result = cursor.fetchall()
+    if not ville_result:
+        return "Ville non trouvée", 404
+
+    # Verifier si le quartier existe
+    cursor.execute("SELECT * FROM immobilier WHERE ville=? AND quartier=?", (ville, quartier))
+    quartier_result = cursor.fetchall()
+    if not quartier_result:
+        return "Quartier non trouvé", 404
+
     cursor.execute("SELECT AVG(prix) FROM immobilier WHERE ville=? AND quartier=?", (ville, quartier))
     prix_moyen = cursor.fetchone()
     connection.close()
